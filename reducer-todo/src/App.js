@@ -15,7 +15,8 @@ function App() {
       {state.map((item) => {
         return <h1>{item.item}</h1>
       })}
-      <button onClick={() => dispatch({ type: 'ADD', payload: {item: 'test'} })}>Testing</button>
+      <button onClick={() => dispatch({ type: 'ADD', payload: { item: 'test', id: Date.now() }})}>Testing</button>
+      <button onClick={() => dispatch({ type: 'DELETE', payload: { id: 'test' }})}>Testing</button>
     </div>
   );
 }
