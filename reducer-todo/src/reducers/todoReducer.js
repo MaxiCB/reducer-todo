@@ -13,5 +13,6 @@ export const todoReducer = (state, action) => {
 export const initialState =  [{
     item: 'Learn about reducers',
     completed: false,
+    due: new Date(),
     id: 3892987589
 }]

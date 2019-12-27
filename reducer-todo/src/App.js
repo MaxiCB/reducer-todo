@@ -5,6 +5,7 @@ import { todoReducer } from './reducers/todoReducer';
 import { initialState } from './reducers/todoReducer'
 
 import './App.css';
+import TodoList from './components/TodoList';
 
 function App() {
 
@@ -12,9 +13,7 @@ function App() {
 
   return (
     <div className="App">
-      {state.map((item) => {
-        return <h1>{item.item}</h1>
-      })}
+      <TodoList tasks={state}/>
       <button onClick={() => dispatch({ type: 'ADD', payload: { item: 'test', id: Date.now() }})}>Testing</button>
       <button onClick={() => dispatch({ type: 'DELETE', payload: { id: 'test' }})}>Testing</button>
     </div>
