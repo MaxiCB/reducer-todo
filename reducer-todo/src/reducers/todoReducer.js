@@ -4,7 +4,7 @@ export const todoReducer = (state, action) => {
         case 'ADD': 
             return [...state, action.payload]
         case 'DELETE':
-            return state.filter((item) => item.id !== action.payload.id)
+            return state.filter((item) => item.id !== action.payload.id);
         case 'COMPLETE':
             let temp = state.filter(item => item.id === action.payload.id);
             let filtered = state.filter((item) => item.id !== action.payload.id);
@@ -15,6 +15,8 @@ export const todoReducer = (state, action) => {
             temp[0].completed = !temp[0].completed;
             // console.log(temp)
             return [...filtered, ...temp]
+        case 'REMOVE':
+            return state.filter((item) => item.completed !== true);
         default:
             return state
     }
@@ -22,7 +24,7 @@ export const todoReducer = (state, action) => {
 
 export const initialState =  [{
     item: 'Learn about reducers',
-    completed: true,
+    completed: false,
     due: new Date(),
     id: 3892987589
 }]

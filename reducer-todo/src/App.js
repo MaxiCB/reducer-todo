@@ -6,6 +6,9 @@ import { initialState } from './reducers/todoReducer';
 
 import './App.css';
 import TodoList from './components/TodoList';
+import TodoForm from './components/TodoForm';
+
+import { Button } from 'reactstrap';
 
 function App() {
 
@@ -27,8 +30,9 @@ useEffect(() => {
   return (
     <div className="App">
       <TodoList tasks={state} dispatch={dispatch}/>
-      <button onClick={() => dispatch( { type: 'ADD', payload: test})}>Testing</button>
-      <button onClick={() => dispatch(state, { type: 'DELETE', payload: { id: 'test' }})}>Testing</button>
+      {/* <Button onClick={() => dispatch({ type: 'DELETE', payload: { id: 'test' }})}>Testing</Button> */}
+      <Button onClick={() => dispatch({ type: 'REMOVE'})}>Remove Complete</Button>
+      <TodoForm dispatch={dispatch}/>
     </div>
   );
 }
