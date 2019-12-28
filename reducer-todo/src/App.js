@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useReducer, useEffect } from 'react';
+
+// Reducers
+import { todoReducer } from './reducers/todoReducer';
+import { initialState } from './reducers/todoReducer';
+
 import './App.css';
+import TodoList from './components/TodoList';
 
 function App() {
+
+  const [state, dispatch] = useReducer(todoReducer, initialState);
+
+const test = {
+  item: 'test',
+  completed: false,
+  due: new Date(),
+  id: 'test'
+}
+
+useEffect(() => {
+  console.log(state);
+}, [state])
+
+  console.log(state);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TodoList tasks={state} dispatch={dispatch}/>
+      <button onClick={() => dispatch( { type: 'ADD', payload: test})}>Testing</button>
+      <button onClick={() => dispatch(state, { type: 'DELETE', payload: { id: 'test' }})}>Testing</button>
     </div>
   );
 }
