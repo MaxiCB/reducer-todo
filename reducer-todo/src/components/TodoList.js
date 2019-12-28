@@ -20,7 +20,7 @@ const TodoList = (props) => {
             <tbody>
 
             {props.tasks.map((item, index) => {
-            return <Todo {...item} index={index}/>
+            return <Todo {...item} index={index} dispatch={props.dispatch}/>
             })}
 
             </tbody>
